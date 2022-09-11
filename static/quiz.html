@@ -16,7 +16,7 @@
     <div class='pop-bg'></div>
     <div class='pop-container'>
       <div class='pop-header'><img id="photo" src='/static/tran.png' alt='' /></div>
-      <div class='pop-message'>?</div>
+      <div class='pop-message'>-</div>
     </div>
   </div>
 
@@ -47,8 +47,12 @@
         type: 'GET',
         success: function (data) {
           console.log(data);
-          $('#photo').attr('src', `/static/photos/${data.filename}`);
-          name = data.filename.split('.')[0];
+          if (name === data.filename.split('.')[0]) {
+            getQuiz();
+          } else {
+            $('#photo').attr('src', `/static/photos/${data.filename}`);
+            name = data.filename.split('.')[0];
+          }
         }
       });
     }
