@@ -1,0 +1,42 @@
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Windows shortcuts
+*.lnk
+
+# Mac
+.DS_Store
+
+# JetBrains
+.idea/
+*.iml
+
+# Eclipse
+.settings/
+.metadata/
+
+# Build
+target/
+build/
+dist/
+bin/
+
+# Temp
+*.pid
+*.log
+*.tmp
+
+# python
+venv
+*.pyc
+staticfiles
+.env
+db.sqlite3
+__pycache__
