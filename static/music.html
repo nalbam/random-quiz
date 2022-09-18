@@ -53,9 +53,10 @@
           console.log(data);
           title = data.music.title;
           player = new YT.Player('player', {
+            width: '64',
             height: '30',
-            width: '640',
             videoId: data.music.id,
+            playerVars: { 'autoplay': 1, 'controls': 0 },
             events: {
               'onReady': onPlayerReady,
               // 'onStateChange': onPlayerStateChange
