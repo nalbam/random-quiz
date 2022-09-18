@@ -54,6 +54,7 @@
         type: 'GET',
         success: function (data) {
           console.log(data);
+          singer = data.music.singer;
           title = data.music.title;
           player = new YT.Player('player', {
             width: '64',
