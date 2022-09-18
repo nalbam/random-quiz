@@ -38,9 +38,19 @@
 }
 
 .pop-logo .pop-container .pop-player {
-  height: 50%;
+  height: 20%;
   margin-top: 2%;
   padding: 1%;
+}
+
+.pop-logo .pop-container .pop-equalizer {
+  height: 30%;
+  margin-top: 2%;
+  padding: 1%;
+}
+
+.pop-logo .pop-container .pop-equalizer img {
+  height: 100%;
 }
 
 .pop-logo .pop-container .pop-singer {
