@@ -30,6 +30,8 @@
 
     let title = ""
 
+    let player;
+
     $(document).keyup(function (e) {
       if (e.key == "Enter") {
         if (step === 0) {
@@ -51,7 +53,7 @@
           console.log(data);
           title = data.music.title;
           player = new YT.Player('player', {
-            height: '360',
+            height: '30',
             width: '640',
             videoId: data.music.id,
             events: {
@@ -65,7 +67,6 @@
 
     // 3. This function creates an <iframe> (and YouTube player)
     //    after the API code downloads.
-    var player;
     function onYouTubeIframeAPIReady() {
       getQuiz();
       // player = new YT.Player('player', {
