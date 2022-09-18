@@ -7,6 +7,8 @@ import random
 
 from os import walk
 
+from boto3 import client
+
 from fastapi import FastAPI
 from starlette.staticfiles import StaticFiles
 
@@ -33,31 +35,31 @@ def health():
 
 @app.get("/api/face")
 def face():
-    # s3 = boto3.resource('s3')
-    # bucket = s3.Bucket('%s/%s/'.format(BUCKET_NAME, BUCKET_PATH))
+    conn = client("s3")
 
-    filenames = next(walk("static/photos"), (None, None, []))[2]
+    names = []
+    for key in conn.list_objects(Bucket=BUCKET_NAME, Prefix=BUCKET_PATH)["Contents"]:
+        key = key["Key"]
+        if not key.endswith("/"):
+            names.append(key.split("/")[1])
 
-    # print(filenames)
+    # for name in names:
+    #     print(name)
 
-    filename = random.choice(filenames)
+    name = random.choice(names)
 
-    print(filename)
+    print(name)
 
-    return {"result": "ok", "filename": filename, "version": VERSION}
+    return {"result": "ok", "name": name, "version": VERSION}
 
 
 @app.get("/api/music")
 def music():
-    filenames = next(walk("static/photos"), (None, None, []))[2]
+    music = "music"
 
-    # print(filenames)
+    print(music)
 
-    filename = random.choice(filenames)
-
-    print(filename)
-
-    return {"result": "ok", "filename": filename, "version": VERSION}
+    return {"result": "ok", "music": music, "version": VERSION}
 
 
 if __name__ == "__main__":

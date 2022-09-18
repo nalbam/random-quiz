@@ -47,11 +47,11 @@
         type: 'GET',
         success: function (data) {
           console.log(data);
-          if (name === data.filename.split('.')[0]) {
+          if (name === data.name.split('.')[0]) {
             getQuiz();
           } else {
-            $('#photo').attr('src', `/static/photos/${data.filename}`);
-            name = data.filename.split('.')[0];
+            $('#photo').attr('src', `https://repo.demo.nalbam.com/face-quiz/${data.name}`);
+            name = data.name.split('.')[0];
           }
         }
       });
