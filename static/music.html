@@ -15,28 +15,30 @@
   <div class='pop-logo'>
     <div class='pop-bg'></div>
     <div class='pop-container'>
-      <div class='pop-header'><img id="photo" src='/static/title.png' alt='' /></div>
+      <div class='pop-header'>
+        <div id="player"></div>
+      </div>
       <div class='pop-message'>-</div>
     </div>
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.0/js/bootstrap.min.js"></script>
+  <script src="https://www.youtube.com/iframe_api"></script>
   <script>
     let step = 0;
 
-    let name = ""
+    let title = ""
 
     $(document).keyup(function (e) {
       if (e.key == "Enter") {
         if (step === 0) {
+          $('.pop-message').text(title);
           getQuiz();
-          $('.pop-message').text('?');
           step = 1;
         }
         else {
-          $('.pop-message').text(name);
-          step = 0;
+          document.location.reload();
         }
       }
     });
@@ -47,14 +49,56 @@
         type: 'GET',
         success: function (data) {
           console.log(data);
-          if (name === data.filename.split('.')[0]) {
-            getQuiz();
-          } else {
-            $('#photo').attr('src', `/static/photos/${data.filename}`);
-            name = data.filename.split('.')[0];
-          }
+          title = data.music.title;
+          $('.pop-message').text('?');
+
+          player = new YT.Player('player', {
+            height: '360',
+            width: '640',
+            videoId: data.music.id,
+            events: {
+              'onReady': onPlayerReady,
+              'onStateChange': onPlayerStateChange
+            }
+          });
         }
       });
+    }
+
+    // 3. This function creates an <iframe> (and YouTube player)
+    //    after the API code downloads.
+    var player;
+    function onYouTubeIframeAPIReady() {
+      getQuiz();
+      // player = new YT.Player('player', {
+      //   height: '360',
+      //   width: '640',
+      //   videoId: 'M7lc1UVf-VE',
+      //   events: {
+      //     'onReady': onPlayerReady,
+      //     'onStateChange': onPlayerStateChange
+      //   }
+      // });
+    }
+
+    // 4. The API will call this function when the video player is ready.
+    function onPlayerReady(event) {
+      event.target.playVideo();
+    }
+
+    // 5. The API calls this function when the player's state changes.
+    //    The function indicates that when playing a video (state=1),
+    //    the player should play for six seconds and then stop.
+    var done = false;
+    function onPlayerStateChange(event) {
+      if (event.data == YT.PlayerState.PLAYING && !done) {
+        setTimeout(stopVideo, 6000);
+        done = true;
+      }
+    }
+
+    function stopVideo() {
+      player.stopVideo();
     }
   </script>
 
