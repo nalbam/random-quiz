@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="/static/favicon.ico">
+  <title>music quiz</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.0/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+
+<body>
+
+  <div class='pop-logo'>
+    <div class='pop-bg'></div>
+    <div class='pop-container'>
+      <div class='pop-header'><img id="photo" src='/static/title.png' alt='' /></div>
+      <div class='pop-message'>-</div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.0/js/bootstrap.min.js"></script>
+  <script>
+    let step = 0;
+
+    let name = ""
+
+    $(document).keyup(function (e) {
+      if (e.key == "Enter") {
+        if (step === 0) {
+          getQuiz();
+          $('.pop-message').text('?');
+          step = 1;
+        }
+        else {
+          $('.pop-message').text(name);
+          step = 0;
+        }
+      }
+    });
+
+    function getQuiz() {
+      $.ajax({
+        url: '/api/music',
+        type: 'GET',
+        success: function (data) {
+          console.log(data);
+          if (name === data.filename.split('.')[0]) {
+            getQuiz();
+          } else {
+            $('#photo').attr('src', `/static/photos/${data.filename}`);
+            name = data.filename.split('.')[0];
+          }
+        }
+      });
+    }
+  </script>
+
+</body>
+
+</html>

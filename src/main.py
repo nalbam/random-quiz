@@ -27,8 +27,21 @@ def health():
     return {"result": "ok", "version": VERSION}
 
 
-@app.get("/api/quiz")
-def quiz():
+@app.get("/api/face")
+def face():
+    filenames = next(walk("static/photos"), (None, None, []))[2]
+
+    # print(filenames)
+
+    filename = random.choice(filenames)
+
+    print(filename)
+
+    return {"result": "ok", "filename": filename, "version": VERSION}
+
+
+@app.get("/api/music")
+def music():
     filenames = next(walk("static/photos"), (None, None, []))[2]
 
     # print(filenames)
@@ -41,4 +54,4 @@ def quiz():
 
 
 if __name__ == "__main__":
-    quiz()
+    face()
