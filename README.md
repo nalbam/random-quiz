@@ -1,4 +1,4 @@
-# face-quiz
+# random-quiz
 
 ## requirements
 
