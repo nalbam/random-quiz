@@ -56,7 +56,31 @@ def music():
         {
             "id": "9bZkp7q19f0",
             "title": "PSY - GANGNAM STYLE(강남스타일)",
-        }
+        },
+        {
+            "id": "CHp0Kaidr14",
+            "title": "뉴진스(NewJeans) - Attention",
+        },
+        {
+            "id": "WZwr2a_lFWY",
+            "title": "IZ*ONE(아이즈원) - 라비앙로즈 (La Vie en Rose)",
+        },
+        {
+            "id": "8AMBslo1zng",
+            "title": "IVE(아이브) - LOVE DIVE",
+        },
+        {
+            "id": "0ZukHxqOA0o",
+            "title": "IU(아이유) - Lost Child(미아)",
+        },
+        {
+            "id": "WH0iiU0cv00",
+            "title": "서태지(SEOTAIJI) - 소격동(Sogyeokdong)",
+        },
+        {
+            "id": "mZz9uYdj_v4",
+            "title": "악동뮤지션(AKMU) - 어떻게 이별까지 사랑하겠어, 널 사랑하는 거지",
+        },
     ]
 
     music = random.choice(musics)
