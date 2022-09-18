@@ -43,9 +43,6 @@ def face():
         if not key.endswith("/"):
             names.append(key.split("/")[1])
 
-    # for name in names:
-    #     print(name)
-
     name = random.choice(names)
 
     print(name)
@@ -55,12 +52,23 @@ def face():
 
 @app.get("/api/music")
 def music():
-    music = "music"
+    musics = [
+        {
+            "id": "9bZkp7q19f0",
+            "title": "PSY - GANGNAM STYLE(강남스타일)",
+        }
+    ]
+
+    music = random.choice(musics)
 
     print(music)
 
-    return {"result": "ok", "music": music, "version": VERSION}
+    return {
+        "result": "ok",
+        "music": music,
+        "version": VERSION,
+    }
 
 
 if __name__ == "__main__":
-    face()
+    music()
