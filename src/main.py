@@ -55,31 +55,63 @@ def music():
     musics = [
         {
             "id": "9bZkp7q19f0",
-            "title": "PSY - GANGNAM STYLE(강남스타일)",
+            "singer": "PSY",
+            "title": "GANGNAM STYLE(강남스타일)",
         },
         {
             "id": "CHp0Kaidr14",
-            "title": "뉴진스(NewJeans) - Attention",
+            "singer": "뉴진스(NewJeans)",
+            "title": "Attention",
         },
         {
             "id": "WZwr2a_lFWY",
-            "title": "IZ*ONE(아이즈원) - 라비앙로즈 (La Vie en Rose)",
+            "singer": "IZ*ONE(아이즈원)",
+            "title": "라비앙로즈 (La Vie en Rose)",
         },
         {
             "id": "8AMBslo1zng",
-            "title": "IVE(아이브) - LOVE DIVE",
+            "singer": "IVE(아이브)",
+            "title": "LOVE DIVE",
         },
         {
             "id": "0ZukHxqOA0o",
-            "title": "IU(아이유) - Lost Child(미아)",
+            "singer": "IU(아이유)",
+            "title": "Lost Child(미아)",
         },
         {
             "id": "WH0iiU0cv00",
-            "title": "서태지(SEOTAIJI) - 소격동(Sogyeokdong)",
+            "singer": "서태지(SEOTAIJI)",
+            "title": "소격동(Sogyeokdong)",
         },
         {
             "id": "mZz9uYdj_v4",
-            "title": "악동뮤지션(AKMU) - 어떻게 이별까지 사랑하겠어, 널 사랑하는 거지",
+            "singer": "악동뮤지션(AKMU)",
+            "title": "어떻게 이별까지 사랑하겠어, 널 사랑하는 거지",
+        },
+        {
+            "id": "MCEcWcIww5k",
+            "singer": "Ailee(에일리)",
+            "title": "I will show you(보여줄게)",
+        },
+        {
+            "id": "1VdPvAqVrow",
+            "singer": "코요태 (Koyote)",
+            "title": "실연 (Broken Heart)",
+        },
+        {
+            "id": "ePpPVE-GGJw",
+            "singer": "TWICE(트와이스)",
+            "title": "TT(티티)",
+        },
+        {
+            "id": "Amq-qlqbjYA",
+            "singer": "BLACKPINK",
+            "title": "마지막처럼 (AS IF IT'S YOUR LAST)",
+        },
+        {
+            "id": "nXJcDtPj1VM",
+            "singer": "서태지와 아이들(Seo Taiji and Boys)",
+            "title": "하여가 (Hayeoga)",
         },
     ]
 

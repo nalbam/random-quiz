@@ -15,10 +15,11 @@
   <div class='pop-logo'>
     <div class='pop-bg'></div>
     <div class='pop-container'>
-      <div class='pop-header'>
+      <div class='pop-player'>
         <div id="player"></div>
       </div>
-      <div class='pop-message'>-</div>
+      <div class='pop-singer'>-</div>
+      <div class='pop-message'></div>
     </div>
   </div>
 
@@ -28,13 +29,15 @@
   <script>
     let step = 0;
 
-    let title = ""
+    let singer = "";
+    let title = "";
 
     let player;
 
     $(document).keyup(function (e) {
       if (e.key == "Enter") {
         if (step === 0) {
+          $('.pop-singer').text(singer);
           $('.pop-message').text(title);
           step = 1;
         }
@@ -45,7 +48,7 @@
     });
 
     function getQuiz() {
-      $('.pop-message').text('?');
+      $('.pop-singer').text('?');
       $.ajax({
         url: '/api/music',
         type: 'GET',
@@ -70,15 +73,6 @@
     //    after the API code downloads.
     function onYouTubeIframeAPIReady() {
       getQuiz();
-      // player = new YT.Player('player', {
-      //   height: '360',
-      //   width: '640',
-      //   videoId: 'M7lc1UVf-VE',
-      //   events: {
-      //     'onReady': onPlayerReady,
-      //     'onStateChange': onPlayerStateChange
-      //   }
-      // });
     }
 
     // 4. The API will call this function when the video player is ready.
