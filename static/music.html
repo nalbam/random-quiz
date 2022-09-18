@@ -34,7 +34,6 @@
       if (e.key == "Enter") {
         if (step === 0) {
           $('.pop-message').text(title);
-          getQuiz();
           step = 1;
         }
         else {
@@ -44,14 +43,13 @@
     });
 
     function getQuiz() {
+      $('.pop-message').text('?');
       $.ajax({
         url: '/api/music',
         type: 'GET',
         success: function (data) {
           console.log(data);
           title = data.music.title;
-          $('.pop-message').text('?');
-
           player = new YT.Player('player', {
             height: '360',
             width: '640',

@@ -31,7 +31,6 @@
       if (e.key == "Enter") {
         if (step === 0) {
           getQuiz();
-          $('.pop-message').text('?');
           step = 1;
         }
         else {
@@ -42,6 +41,7 @@
     });
 
     function getQuiz() {
+      $('.pop-message').text('?');
       $.ajax({
         url: '/api/face',
         type: 'GET',
