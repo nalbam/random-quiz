@@ -1,7 +1,7 @@
 import os
 
 from pynamodb.models import Model
-from pynamodb.attributes import UnicodeAttribute, NumberAttribute, UTCDateTimeAttribute
+from pynamodb.attributes import UnicodeAttribute, UTCDateTimeAttribute
 
 
 TABLE_NAME = os.environ.get("TABLE_NAME", "random-quiz")

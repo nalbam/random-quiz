@@ -1,8 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+import datetime
 import os
 import random
+import uuid
 
 from boto3 import client
 
@@ -33,7 +35,7 @@ def health():
 
 
 @app.get("/quiz/{type}")
-def quiz(type: str):
+def get_quiz(type: str):
     # scan db
     list = QuizModel.scan(
         (QuizModel.type == type),
@@ -44,7 +46,6 @@ def quiz(type: str):
     for item in list:
         result.append(
             {
-                "type": item.type,
                 "url": item.url,
                 "name": item.name,
                 "title": item.title,
@@ -58,6 +59,35 @@ def quiz(type: str):
         "items": result,
         "version": VERSION,
     }
+
+
+@app.post("/quiz/{type}")
+def post_quiz(type: str, url: str, name: str, title: str):
+    print("+ post_quiz", type, name, title)
+
+    list = QuizModel.scan(
+        (QuizModel.type == type) & (QuizModel.url == url),
+    )
+
+    quiz = None
+    for item in list:
+        quiz = item
+        break
+
+    if quiz is None:
+        quiz = QuizModel()
+        quiz.id = str(uuid.uuid4())
+        quiz.type = type
+        quiz.url = url
+        # quiz.reg_date = datetime.datetime.now()
+
+    quiz.name = name
+    quiz.title = title
+
+    if VERSION != "v0.0.0":
+        quiz.save()
+
+    return {"result": "ok", "version": VERSION}
 
 
 @app.get("/api/face")
