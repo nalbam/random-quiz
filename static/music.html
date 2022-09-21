@@ -67,11 +67,11 @@
               height: '10',
               width: '10',
               videoId: data.music.id,
-              playerVars: { 'autoplay': 1, 'controls': 0 },
-              // events: {
-              //   'onReady': onPlayerReady,
-              //   // 'onStateChange': onPlayerStateChange
-              // }
+              playerVars: { 'controls': 0 },
+              events: {
+                'onReady': onPlayerReady,
+                // 'onStateChange': onPlayerStateChange
+              }
             });
           }
         }
