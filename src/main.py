@@ -46,7 +46,7 @@ def get_quiz(type: str):
     for item in list:
         result.append(
             {
-                "url": item.url,
+                "code": item.code,
                 "name": item.name,
                 "title": item.title,
             }
@@ -62,11 +62,11 @@ def get_quiz(type: str):
 
 
 @app.post("/quiz/{type}")
-def post_quiz(type: str, url: str, name: str, title: str):
+def post_quiz(type: str, code: str, name: str, title: str):
     print("+ post_quiz", type, name, title)
 
     list = QuizModel.scan(
-        (QuizModel.type == type) & (QuizModel.url == url),
+        (QuizModel.type == type) & (QuizModel.code == code),
     )
 
     quiz = None
@@ -78,7 +78,7 @@ def post_quiz(type: str, url: str, name: str, title: str):
         quiz = QuizModel()
         quiz.id = str(uuid.uuid4())
         quiz.type = type
-        quiz.url = url
+        quiz.code = code
         # quiz.reg_date = datetime.datetime.now()
 
     quiz.name = name

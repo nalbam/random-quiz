@@ -16,7 +16,7 @@ class QuizModel(Model):
 
     id = UnicodeAttribute(hash_key=True)  # uuid
     type = UnicodeAttribute(range_key=True)  # face, music
-    url = UnicodeAttribute(null=False)
+    code = UnicodeAttribute(null=False)
     name = UnicodeAttribute(null=False)
     title = UnicodeAttribute(null=True)
     # reg_date = UTCDateTimeAttribute(null=True)
