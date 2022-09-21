@@ -19,4 +19,4 @@ class QuizModel(Model):
     url = UnicodeAttribute(null=False)
     name = UnicodeAttribute(null=False)
     title = UnicodeAttribute(null=True)
-    reg_date = UTCDateTimeAttribute(null=True)
+    # reg_date = UTCDateTimeAttribute(null=True)
