@@ -1,16 +1,15 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import boto3
 import os
 import random
-
-from os import walk
 
 from boto3 import client
 
 from fastapi import FastAPI
 from starlette.staticfiles import StaticFiles
+
+from .models import QuizModel
 
 
 VERSION = os.environ.get("VERSION", "v0.0.0")
@@ -33,6 +32,23 @@ def health():
     return {"result": "ok", "version": VERSION}
 
 
+@app.get("/quiz/{type}")
+def quiz(type: str):
+    # scan db
+    list = QuizModel.scan(
+        (QuizModel.type == type),
+        # index_name="type_idx",
+    )
+
+    items = random.sample(list, 10)
+
+    return {
+        "type": type,
+        "items": items,
+        "version": VERSION,
+    }
+
+
 @app.get("/api/face")
 def face():
     conn = client("s3")
@@ -52,7 +68,6 @@ def face():
 
 @app.get("/api/music")
 def music():
-    # TODO: database dynamodb?
     musics = [
         {
             "id": "9bZkp7q19f0",
