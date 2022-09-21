@@ -40,7 +40,18 @@ def quiz(type: str):
         # index_name="type_idx",
     )
 
-    items = random.sample(list, 10)
+    result = []
+    for item in list:
+        result.append(
+            {
+                "type": item.type,
+                "url": item.url,
+                "name": item.name,
+                "title": item.title,
+            }
+        )
+
+    items = random.sample(result, 10)
 
     return {
         "type": type,
