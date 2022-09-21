@@ -60,16 +60,20 @@
           console.log(data);
           singer = data.music.singer;
           title = data.music.title;
-          player = new YT.Player('player', {
-            width: '10',
-            height: '10',
-            videoId: data.music.id,
-            playerVars: { 'autoplay': 1, 'controls': 0 },
-            events: {
-              'onReady': onPlayerReady,
-              // 'onStateChange': onPlayerStateChange
-            }
-          });
+          if (player) {
+            player.loadVideoById(data.music.id);
+          } else {
+            player = new YT.Player('player', {
+              height: '10',
+              width: '10',
+              videoId: data.music.id,
+              playerVars: { 'autoplay': 1, 'controls': 0 },
+              events: {
+                'onReady': onPlayerReady,
+                // 'onStateChange': onPlayerStateChange
+              }
+            });
+          }
         }
       });
     }
