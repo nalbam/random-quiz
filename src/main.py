@@ -51,11 +51,11 @@ def quiz(type: str):
             }
         )
 
-    items = random.sample(result, 10)
+    # items = random.sample(result, 10)
 
     return {
         "type": type,
-        "items": items,
+        "items": result,
         "version": VERSION,
     }
 

@@ -18,7 +18,7 @@
       <div class='pop-player'>
         <div id="player"></div>
       </div>
-      <div class='pop-equalizer'><img src='/static/equalizer.gif' alt='' /></div>
+      <div class='pop-equalizer'><img id="photo" src='/static/equalizer.gif' alt='' /></div>
       <div class='pop-singer'>-</div>
       <div class='pop-message'></div>
     </div>
@@ -43,13 +43,16 @@
           step = 1;
         }
         else {
-          document.location.reload();
+          // document.location.reload();
+          getQuiz();
+          step = 0;
         }
       }
     });
 
     function getQuiz() {
       $('.pop-singer').text('?');
+      $('.pop-message').text('');
       $.ajax({
         url: '/api/music',
         type: 'GET',
