@@ -42,6 +42,7 @@
 
     function getQuiz() {
       $('.pop-message').text('?');
+      $('#photo').attr('src', `/static/loading.gif`);
       $.ajax({
         url: '/api/face',
         type: 'GET',
