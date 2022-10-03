@@ -8,7 +8,7 @@ import uuid
 
 from boto3 import client
 
-from fastapi import FastAPI
+from fastapi import FastAPI, Response
 from starlette.staticfiles import StaticFiles
 
 from .models import QuizModel
@@ -26,7 +26,8 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 
 @app.get("/")
 def home():
-    return {"Hello": "World"}
+    html = "<!doctype html><html><head><meta http-equiv='refresh' content='0; url=/static/quiz.html' /></head></html>"
+    return Response(content=html, media_type="text/html")
 
 
 @app.get("/healthz")
