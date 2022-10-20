@@ -36,7 +36,7 @@ def health():
 
 
 @app.get("/quiz/{type}")
-def get_quiz(type: str):
+def get_quiz(type: str, num: int = 5):
     # scan db
     list = QuizModel.scan(
         (QuizModel.type == type),
@@ -53,7 +53,7 @@ def get_quiz(type: str):
             }
         )
 
-    items = random.sample(result, 5)
+    items = random.sample(result, num)
 
     return {
         "type": type,
