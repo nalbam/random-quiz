@@ -54,19 +54,19 @@
       $('.pop-singer').text('?');
       $('.pop-message').text('');
       $.ajax({
-        url: '/api/music',
+        url: '/quiz/music',
         type: 'GET',
         success: function (data) {
           console.log(data);
-          singer = data.music.singer;
-          title = data.music.title;
+          singer = data.item.name;
+          title = data.item.title;
           if (player) {
-            player.loadVideoById(data.music.id);
+            player.loadVideoById(data.item.code);
           } else {
             player = new YT.Player('player', {
               height: '10',
               width: '10',
-              videoId: data.music.id,
+              videoId: data.item.code,
               playerVars: { 'autoplay': 1, 'controls': 0 },
               events: {
                 'onReady': onPlayerReady,
